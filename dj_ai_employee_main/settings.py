@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 from pathlib import Path
 import pymysql
-from django.conf.global_settings import LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL
+# from django.conf.global_settings import LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL
 
 pymysql.install_as_MySQLdb()
 pymysql.version_info = (2,2,1,"final", 0)
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'orders',
+    'support',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,6 @@ MAILERS = {
 LOGIN_REDIRECT_URL ='/order/'
 LOGOUT_REDIRECT_URL ='/login/'
 LOGIN_URL ='/login/'
+
+GEMINI_API_KEY=config('GEMINI_API_KEY')
+GEMINI_MODEL=config('GEMINI_MODEL')
