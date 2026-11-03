@@ -38,7 +38,7 @@ def get_refund_history(user_id):
         "History": history,
     }
 
-def get_status(tracking_number, carrier):
+def check_delivery_status(tracking_number, carrier):
     default_response={
             "status": "Unknown",
             "last_location": "Tracking details Unnavailable",
