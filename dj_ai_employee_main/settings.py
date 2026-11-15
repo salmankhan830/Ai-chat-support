@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/6.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 import pymysql
 # from django.conf.global_settings import LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL
@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-w&3aa#d*q75&ndk*+wdgk1hv7zyv#k&^s&ev^ejhq@062-tfn2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config("ALLOWED_HOSTS").split(",")
 
 
 # Application definition
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -128,7 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
@@ -146,3 +147,6 @@ LOGIN_URL ='/login/'
 
 GEMINI_API_KEY=config('GEMINI_API_KEY')
 GEMINI_MODEL=config('GEMINI_MODEL')
+
+
+STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
