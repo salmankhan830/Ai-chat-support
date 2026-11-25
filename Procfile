@@ -1,1 +1,1 @@
-web: gunicorn dj_ai_employee_main.wsgi --bind 0.0.0.0:$PORT
+web: python manage.py migrate && gunicorn dj_ai_employee_main.wsgi --bind 0.0.0.0:$PORT
