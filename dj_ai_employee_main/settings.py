@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 import os
 from pathlib import Path
 import pymysql
+from django.conf.global_settings import CSRF_TRUSTED_ORIGINS
+
 # from django.conf.global_settings import LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL
 
 pymysql.install_as_MySQLdb()
@@ -150,3 +152,7 @@ GEMINI_MODEL=config('GEMINI_MODEL')
  
 
 STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
+
+CSRF_TRUSTED_ORIGINS = {
+    "https://ai-chat-support-production.up.railway.app"
+}
