@@ -147,6 +147,6 @@ LOGIN_URL ='/login/'
 
 GEMINI_API_KEY=config('GEMINI_API_KEY')
 GEMINI_MODEL=config('GEMINI_MODEL')
-
+ 
 
 STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
